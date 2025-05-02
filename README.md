@@ -98,7 +98,7 @@ Then enable less secure apps in Gmail:
 
 ## 🙋‍♂️ Contributor
 
-* [Your GitHub Name](https://github.com/LucasCatty)
+* (https://github.com/LucasCatty)
 
 ---
 
