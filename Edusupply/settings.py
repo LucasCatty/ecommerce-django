@@ -1,6 +1,8 @@
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,7 +10,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '#vw(03o=(9kbvg!&2d5i!2$_58x@_-3l4wujpow6(ym37jxnza')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # DEBUG & ALLOWED HOSTS for Render
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
