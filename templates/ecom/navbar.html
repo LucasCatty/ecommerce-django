@@ -5,24 +5,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 body {
-    background: linear-gradient(135deg, #ece9e6, #ffffff);
-    font-family: 'Montserrat', sans-serif;
+    background: #f0f9ff;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
 }
 
 #navbar {
-    background: linear-gradient(to right, #141e30, #243b55);
-    padding: 20px 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, #4dabf7, #74c0fc);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(77, 171, 247, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transform: perspective(1000px);
 }
 
 .navbar-container {
@@ -31,22 +30,24 @@ body {
     align-items: center;
     gap: 20px;
     padding: 0 40px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 h2 a {
-    font-weight: 800;
-    font-size: 32px;
-    background: linear-gradient(to right, #ffe11b, #ff9100);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 28px;
+    color: #fff;
     text-decoration: none;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     display: inline-block;
-    transform: rotateY(-2deg);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
 }
 
 h2 a:hover {
-    transform: rotateY(0deg) scale(1.05);
+    transform: translateY(-2px);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-search {
@@ -59,76 +60,101 @@ h2 a:hover {
     padding: 12px 20px;
     border: none;
     border-radius: 30px 0 0 30px;
-    font-size: 15px;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(77, 171, 247, 0.1);
     width: 100%;
+    transition: all 0.3s ease;
+}
+
+.navbar-input:focus {
+    outline: none;
+    box-shadow: 0 2px 15px rgba(77, 171, 247, 0.2);
 }
 
 .navbar-button {
-    background: #ffe11b;
+    background: #1971c2;
     border: none;
     border-radius: 0 30px 30px 0;
     padding: 12px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    color: white;
 }
 
 .navbar-button:hover {
-    background: #fdd835;
-    transform: scale(1.1);
+    background: #1864ab;
+    transform: translateX(2px);
 }
 
 .cart-button {
-    background: #444;
+    background: #e7f5ff;
     border: none;
     border-radius: 50px;
-    padding: 12px 20px;
-    color: white;
+    padding: 10px 20px;
+    color: #1971c2;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    transition: transform 0.3s ease, background 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transform: rotateY(1deg);
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(77, 171, 247, 0.15);
+    text-decoration: none;
 }
 
 .cart-button:hover {
-    transform: rotateY(0deg) scale(1.05);
-    background: #000;
+    transform: translateY(-2px);
+    background: #fff;
+    box-shadow: 0 6px 12px rgba(77, 171, 247, 0.25);
+    color: #1864ab;
 }
 
 .item-number {
-    background-color: #ffe11b;
-    color: #000;
+    background-color: #1971c2;
+    color: #fff;
     border-radius: 50%;
-    padding: 5px 10px;
+    padding: 4px 8px;
     font-weight: bold;
     font-size: 12px;
-    margin-left: 5px;
 }
 
 .largenav {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
-    justify-content: flex-end;
-    margin-top: 15px;
-    position: relative;
+    justify-content: center;
+    margin: 15px 0 5px;
+    padding: 0;
 }
 
 .upper-links, .profile-links {
-    color: white;
+    color: #fff;
     font-weight: 500;
     transition: all 0.3s ease;
     text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    position: relative;
+}
+
+.upper-links:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.upper-links:hover:after {
+    width: 100%;
 }
 
 .upper-links:hover, .profile-links:hover {
-    color: #ffe11b;
-    text-shadow: 0 0 5px rgba(255,255,0,0.4);
+    color: #fff;
 }
 
 .dropdown {
@@ -139,14 +165,33 @@ h2 a:hover {
     display: none;
     position: absolute;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    padding: 10px 0;
-    transform: perspective(600px) rotateX(0deg);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(77, 171, 247, 0.15);
+    padding: 8px 0;
     z-index: 10;
     top: 100%;
-    left: 0;
-    min-width: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 180px;
+    margin-top: 15px;
+    border: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dropdown-menu:before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -154,37 +199,57 @@ h2 a:hover {
 }
 
 .dropdown-menu a {
-    color: #333;
+    color: #1971c2;
     padding: 10px 20px;
     display: block;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .dropdown-menu a:hover {
-    background-color: #f4f4f4;
+    background-color: #e7f5ff;
+    transform: translateX(5px);
 }
 
+/* Mobile responsiveness */
 @media screen and (max-width: 767px) {
     .navbar-container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 10px;
+        gap: 15px;
+        padding: 0 20px;
     }
 
     .navbar-search {
-        flex-direction: column;
+        flex-direction: row;
     }
 
-    .navbar-input, .navbar-button {
-        width: 100%;
-        border-radius: 30px;
-        margin-bottom: 10px;
+    .navbar-input {
+        border-radius: 30px 0 0 30px;
+    }
+    
+    .navbar-button {
+        border-radius: 0 30px 30px 0;
     }
 
     .largenav {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .dropdown-menu:before {
+        display: none;
     }
 }
 </style>
@@ -196,7 +261,7 @@ h2 a:hover {
 
         <div class="navbar-search">
           <form action="/search" method="get" style="display:flex; width: 100%;">
-            <input class="navbar-input" type="search" name="query" id="query" placeholder="Search for Products, Brands and more">
+            <input class="navbar-input" type="search" name="query" id="query" placeholder="Search for educational products...">
             <button class="navbar-button" type="submit">🔍</button>
           </form>
         </div>

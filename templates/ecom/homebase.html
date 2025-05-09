@@ -1,28 +1,89 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
   <meta charset="utf-8">
-  <title>Girls Code || Group work</title>
+  <title>Girls Code || Group Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #3498db;
+      --dark-blue: #2980b9;
+      --light-blue: #e6f2ff;
+      --accent-blue: #5dade2;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
+    }
 
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content-wrapper {
+      flex: 1;
+      padding: 20px 0;
+      background-color: var(--white);
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Animation for page transitions */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-content {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 0 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  {%if request.user.is_authenticated%}
+  {% if request.user.is_authenticated %}
     {% include "ecom/customer_navbar.html" %}
-  {%else%}
+  {% else %}
     {% include "ecom/navbar.html" %}
-  {%endif%}
+  {% endif %}
 
+  <div class="content-wrapper">
+    <div class="main-container">
+      <div class="page-content">
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  </div>
 
-  {%block content%}
-
-  {%endblock content%}
-
-  
   {% include "ecom/footer.html" %}
+
+  <!-- Optional JavaScript -->
+  <script>
+    // Smooth scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
 </body>
-
-
 </html>

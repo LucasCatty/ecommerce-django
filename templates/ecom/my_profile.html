@@ -2,74 +2,211 @@
 {% load static %}
 {% block content %}
 
+<style>
+  :root {
+    --primary-blue: #4dabf7;
+    --light-blue: #a5d8ff;
+    --lighter-blue: #e7f5ff;
+    --dark-blue: #1971c2;
+    --text-color: #2b3a55;
+  }
 
-<style media="screen">
   body {
-    background-color:#8c9eff;
-  }
-  .button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+    background-color: var(--lighter-blue);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
-  .button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+  .profile-section {
+    max-width: 900px;
+    margin: 3rem auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(77, 171, 247, 0.15);
+    overflow: hidden;
   }
 
-  .button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+  .profile-header {
+    background-color: var(--light-blue);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
   }
 
-  .button:hover span {
-  padding-right: 25px;
+  .profile-header::after {
+    content: "";
+    display: block;
+    height: 30px;
+    background-color: white;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    border-radius: 50% 50% 0 0;
   }
 
-  .button:hover span:after {
-  opacity: 1;
-  right: 0;
+  .profile-content {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 
+  .profile-image-container {
+    margin-right: 2rem;
+    margin-bottom: 1.5rem;
+  }
 
+  .profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--light-blue);
+    box-shadow: 0 5px 15px rgba(77, 171, 247, 0.2);
+  }
+
+  .profile-details {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .profile-info {
+    background-color: var(--lighter-blue);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-address, .profile-contact {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+  }
+
+  .profile-icon {
+    color: var(--primary-blue);
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+
+  .profile-actions {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--lighter-blue);
+    border-radius: 0 0 12px 12px;
+  }
+
+  .edit-button {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(77, 171, 247, 0.3);
+  }
+
+  .edit-button:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(77, 171, 247, 0.4);
+  }
+
+  .edit-button span {
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+  }
+
+  .edit-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.3s;
+  }
+
+  .edit-button:hover span {
+    padding-right: 20px;
+  }
+
+  .edit-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .profile-section {
+      margin: 1rem;
+    }
+    
+    .profile-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .profile-image-container {
+      margin-right: 0;
+    }
+    
+    .profile-details {
+      text-align: center;
+    }
+  }
 </style>
-<br><br><br>
-<div style="padding-left:300px;" class="container">
 
-        <div class="col-sm-2 col-md-2">
-            <img src="{% static customer.profile_pic.url %}"   alt="profile pic" class="img-rounded img-responsive" />
+<div class="profile-section">
+  <div class="profile-header">
+    <h1>Customer Profile</h1>
+  </div>
+  
+  <div class="profile-content">
+    <div class="profile-image-container">
+      <img src="{% static customer.profile_pic.url %}" alt="Profile Picture" class="profile-image">
+    </div>
+    
+    <div class="profile-details">
+      <h2 class="profile-name">{{ request.user }}</h2>
+      
+      <div class="profile-info">
+        <div class="profile-address">
+          <i class="fas fa-map-marker-alt profile-icon"></i>
+          <span>{{ customer.address }}</span>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <blockquote>
-                <p>{{request.user}}</p> <small><cite title="Source Title">{{customer.address}}  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
-            </blockquote>
-            <p> <i class="glyphicon glyphicon-phone"></i> {{customer.mobile}}
-            </p>
+        
+        <div class="profile-contact">
+          <i class="fas fa-phone profile-icon"></i>
+          <span>{{ customer.mobile }}</span>
         </div>
-
+      </div>
+    </div>
+  </div>
+  
+  <div class="profile-actions">
+    <a href="/edit-profile" class="edit-button">
+      <span>Edit Profile</span>
+    </a>
+  </div>
 </div>
-<br>
-<div style="text-align: center;">
-  <a href="/edit-profile"><button class="button" ><span>Edit Profile </span></button></a>
-</div>
-<br><br><br><br><br><br>
 
-
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 {% endblock content %}

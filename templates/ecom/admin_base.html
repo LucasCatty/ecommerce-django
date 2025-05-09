@@ -3,137 +3,360 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>EduSupply | LucasCoder</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style type="text/css">
-    .bs-example {
-      margin: 0px;
-
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #6366f1;
+      --text-light: #f8fafc;
+      --text-dark: #1e293b;
+      --bg-light: #f1f5f9;
+      --bg-dark: #0f172a;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 70px;
+    }
+    
+    .navbar {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 0.75rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    
     .navbar-brand {
-      font-size: 20px;
-      font-family: sans-serif;
-
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
     }
-
-        /*---------------------------------------
-           Social section
-        -----------------------------------------*/
-        footer {
-          padding: 0px 0px 0px 0px;
-          background-color: black;
-          margin: 0px;
-        }
-
-
-        #ftr {
-
-          padding: 20px;
-        }
-
-        .fa {
-
-          font-size: 23px;
-          width: 60px;
-          text-align: center;
-          text-decoration: none;
-          margin: 5px 2px;
-          border-radius: 50%;
-        }
-
-        .fa:hover {
-          opacity: 0.5;
-          text-decoration: none;
-        }
-
-        .fa-facebook {
-          background: #3B5998;
-          color: white;
-          margin-top: 30px;
-        }
-
-        .fa-whatsapp {
-          background: #25d366;
-          color: white;
-        }
-
-        .fa-twitter {
-          background: #55ACEE;
-          color: white;
-        }
-
-        .fa-instagram {
-          background: #125688;
-          color: white;
-        }
-
-        p {
-          text-align: center;
-
-        }
+    
+    .navbar-brand i {
+      margin-right: 0.5rem;
+      font-size: 1.75rem;
+    }
+    
+    .navbar-brand:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--text-light);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after {
+      width: 70%;
+    }
+    
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    
+    .logout-btn {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      transition: var(--transition);
+      font-weight: 500;
+      padding: 0.5rem 1.25rem;
+    }
+    
+    .logout-btn:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+    
+    .logout-btn i {
+      margin-right: 0.5rem;
+    }
+    
+    main {
+      flex: 1;
+      padding: 2rem 0;
+    }
+    
+    footer {
+      background: linear-gradient(to right, var(--bg-dark) 0%, #1e3a8a 100%);
+      color: var(--text-light);
+      padding: 3rem 0 2rem;
+      margin-top: auto;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: 0 0.75rem;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      transition: var(--transition);
+      transform: translateY(0);
+      box-shadow: var(--shadow);
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .social-link.facebook {
+      background: #3B5998;
+    }
+    
+    .social-link.instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    }
+    
+    .social-link.twitter {
+      background: #1DA1F2;
+    }
+    
+    .social-link.whatsapp {
+      background: #25D366;
+    }
+    
+    .footer-info {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      letter-spacing: 1px;
+    }
+    
+    .footer-text {
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .copyright {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    .copyright strong {
+      font-weight: 600;
+      color: var(--text-light);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .navbar-nav {
+        padding: 1rem 0;
+      }
+      
+      .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Animation for page transitions */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
   </style>
 </head>
 
 <body>
-
-
-
-  <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#337AB7;">
-      <a href="/" class="navbar-brand">Ecommerce</a>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+  <!-- Modern Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">
+        <i class="fas fa-graduation-cap"></i>EduSupply
+      </a>
+      
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-        <div class="navbar-nav">
-          <a href="/view-customer" class="nav-item nav-link">Customer</a>
-          <a href="/admin-view-booking" class="nav-item nav-link">Booking</a>
-          <a href="/admin-products" class="nav-item nav-link">Products</a>
-          <a href="/view-feedback" class="nav-item nav-link">Feedback</a>
-        </div>
-
-        <div class="navbar-nav navbar-right">
-          <form action="{% url 'logout' %}" method="post" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" class="nav-item nav-link btn btn-link" style="color: white; text-decoration: none; padding: 0; margin: 0;">
-                LOGOUT
-            </button>
-        </form>
+      
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a href="/view-customer" class="nav-link">
+              <i class="fas fa-users me-1"></i> Customers
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin-view-booking" class="nav-link">
+              <i class="fas fa-shopping-cart me-1"></i> Bookings
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin-products" class="nav-link">
+              <i class="fas fa-box me-1"></i> Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/view-feedback" class="nav-link">
+              <i class="fas fa-comment-dots me-1"></i> Feedback
+            </a>
+          </li>
+        </ul>
         
+        <div class="navbar-nav">
+          <form action="{% url 'logout' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="nav-link logout-btn border-0">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </form>
         </div>
-
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 
-  <!-- content start-->
-  {% block content %}
-
-  {% endblock content %}
-  <!-- content end-->
-<br><br><br><br><br><br><br><br>
-  <footer>
-    <p>
-      <a id="ftr" href="https://www.facebook.com/" class="fa fa-facebook"></a>
-      <a id="ftr" href="https://www.instagram.com/" class="fa fa-instagram"></a>
-      <a id="ftr" href="https://twitter.com/sumitkumar1503" class="fa fa-twitter"></a>
-    </p>
-
-    <br>
+  <!-- Main Content Area -->
+  <main class="fade-in">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
-            <p>GROUP WORK <br>
-              Copyright &copy; 2025 LucasCoder </p>
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </main>
+
+  <!-- Modern Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.facebook.com/" class="social-link facebook" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/" class="social-link instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://twitter.com/" class="social-link twitter" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://wa.me/" class="social-link whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        
+        <div class="footer-info">
+          <div class="footer-logo">
+            <i class="fas fa-graduation-cap me-2"></i>EduSupply
+          </div>
+          <p class="footer-text">Connecting schools, parents, and educational supplies</p>
+          <p class="footer-text">Simplifying the educational experience for everyone</p>
+          
+          <div class="copyright">
+            <p>GROUP WORK: <strong>INEZA Davina, HIRWA Triphine, ORLA Ophelie, NZEYIMANA Esperance, INEZA Ornella, LUCAS CATHY</strong></p>
+            <p>Copyright &copy; 2025 <strong>LucasCoder</strong> - All Rights Reserved</p>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Modern JS libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Add active class to current nav item
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentLocation = location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentLocation) {
+          link.classList.add('active');
+          link.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+          link.style.fontWeight = '600';
+        }
+      });
+      
+      // Fade-in animation for page content
+      setTimeout(() => {
+        document.querySelector('main').style.opacity = '1';
+      }, 100);
+    });
+  </script>
 </body>
 </html>

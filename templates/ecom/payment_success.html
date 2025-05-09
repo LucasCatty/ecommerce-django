@@ -2,50 +2,191 @@
 {% load static %}
 
 {% block content %}
-<style media="screen">
-  .success-page{
-  max-width:300px;
-  display:block;
-  margin: 0 auto;
-  text-align: center;
-      position: relative;
-    top: 50%;
-    transform: perspective(1px) translateY(50%)
-}
-.success-page img{
-  max-width:62px;
-  display: block;
-  margin: 0 auto;
-}
+<style>
+  :root {
+    --primary-blue: #4dabf7;
+    --light-blue: #a5d8ff;
+    --lighter-blue: #e7f5ff;
+    --dark-blue: #1971c2;
+    --success-green: #12b886;
+  }
 
-.btn-view-orders{
-  display: block;
-  border:1px solid #47c7c5;
-  width:100px;
-  margin: 0 auto;
-  margin-top: 45px;
-  padding: 10px;
-  color:#fff;
-  background-color:#47c7c5;
-  text-decoration: none;
-  margin-bottom: 20px;
-}
-h2{
-  color:#0014ff;
-    margin-top: 25px;
+  .success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: var(--lighter-blue);
+    padding: 2rem;
+  }
 
-}
-a{
-  text-decoration: none;
-}
+  .success-card {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(77, 171, 247, 0.15);
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .success-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(to right, var(--primary-blue), var(--light-blue));
+  }
+
+  .checkmark-circle {
+    width: 80px;
+    height: 80px;
+    background-color: var(--success-green);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(18, 184, 134, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(18, 184, 134, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(18, 184, 134, 0); }
+  }
+
+  .checkmark {
+    color: white;
+    font-size: 40px;
+    line-height: 80px;
+  }
+
+  .success-title {
+    color: var(--dark-blue);
+    font-size: 28px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .success-message {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .success-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    min-width: 200px;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(77, 171, 247, 0.3);
+  }
+
+  .btn-secondary {
+    background-color: white;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    min-width: 200px;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--lighter-blue);
+    transform: translateY(-2px);
+  }
+
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: confetti-fall 4s ease-in infinite;
+    opacity: 0;
+  }
+
+  @keyframes confetti-fall {
+    0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .success-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .success-title {
+      font-size: 24px;
+    }
+  }
 </style>
-<div class="success-page" style="top:auto;">
-   <img  src="http://share.ashiknesin.com/green-checkmark.png" class="center" alt="" />
-  <h2>Payment Successful !</h2>
-  <p>We are delighted to inform you that we received your payments</p>
-  <a style="text-decoration:none;" href="/my-order" class="btn-view-orders">View Orders</a>
-  <a style="text-decoration:none;" href="/customer-home">Continue Shopping</a>
+
+<div class="success-container">
+  <div class="success-card">
+    <!-- Confetti animation elements -->
+    <div class="confetti" style="left: 10%; animation-delay: 0.3s; background-color: #4dabf7;"></div>
+    <div class="confetti" style="left: 20%; animation-delay: 0.7s; background-color: #a5d8ff;"></div>
+    <div class="confetti" style="left: 30%; animation-delay: 0.1s; background-color: #1971c2;"></div>
+    <div class="confetti" style="left: 40%; animation-delay: 0.5s; background-color: #4dabf7;"></div>
+    <div class="confetti" style="left: 50%; animation-delay: 0.9s; background-color: #a5d8ff;"></div>
+    <div class="confetti" style="left: 60%; animation-delay: 0.2s; background-color: #1971c2;"></div>
+    <div class="confetti" style="left: 70%; animation-delay: 0.6s; background-color: #4dabf7;"></div>
+    <div class="confetti" style="left: 80%; animation-delay: 0.4s; background-color: #a5d8ff;"></div>
+    <div class="confetti" style="left: 90%; animation-delay: 0.8s; background-color: #1971c2;"></div>
+    
+    <div class="checkmark-circle">
+      <div class="checkmark">✓</div>
+    </div>
+    
+    <h2 class="success-title">Payment Successful!</h2>
+    
+    <p class="success-message">
+      Thank you for your purchase! We're processing your order and will send you a confirmation shortly.
+    </p>
+    
+    <div class="success-buttons">
+      <a href="/my-order" class="btn-primary">View My Orders</a>
+      <a href="/customer-home" class="btn-secondary">Continue Shopping</a>
+    </div>
+  </div>
 </div>
-<br><br><br><br>
-<br><br><br><br>
+
+<!-- Font Awesome for icons if needed -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 {% endblock content %}

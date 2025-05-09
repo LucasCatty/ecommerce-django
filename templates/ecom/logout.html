@@ -1,13 +1,96 @@
 {% extends 'ecom/homebase.html' %}
 {% load static %}
 {% block content %}
-<br><br><br>
-<img src="{% static "images/logout_img.png" %}"  style="width:800px; height:100px; padding-left:400px;">
 
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br>
+<div class="logout-container">
+    <div class="logout-card">
+        <div class="logout-image">
+            <img src="{% static 'images/logout_img.png' %}" alt="Logout Image">
+        </div>
+        <div class="logout-message">
+            <h2>You've been successfully logged out</h2>
+            <p>Thank you for using our service. We hope to see you again soon!</p>
+            <a href="{% url 'login' %}" class="login-button">Log In Again</a>
+        </div>
+    </div>
+</div>
 
-
+<style>
+    .logout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+        padding: 2rem;
+        background-color: #f0f8ff;
+    }
+    
+    .logout-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        border-top: 4px solid #4b9cd3;
+    }
+    
+    .logout-image {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 1rem;
+        background-color: #e6f2ff;
+    }
+    
+    .logout-image img {
+        max-width: 100%;
+        height: auto;
+        max-height: 120px;
+    }
+    
+    .logout-message {
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .logout-message h2 {
+        color: #2980b9;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+    
+    .logout-message p {
+        color: #7f8c8d;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .login-button {
+        display: inline-block;
+        background-color: #4b9cd3;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .login-button:hover {
+        background-color: #2980b9;
+    }
+    
+    @media (max-width: 768px) {
+        .logout-card {
+            max-width: 95%;
+        }
+        
+        .logout-message h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
 
 {% endblock content %}

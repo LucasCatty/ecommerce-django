@@ -2,135 +2,165 @@
 {% load static %}
 {% load widget_tweaks %}
 <html lang="en" dir="ltr">
-
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girls Code || Feedback Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #3498db;
+      --dark-blue: #2980b9;
+      --light-blue: #e6f2ff;
+      --accent-blue: #5dade2;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
+    }
 
-  <title>Girls Code || Group work</title>
-<style media="screen">
-  .form-style-1 {
-  	margin:10px auto;
-  	max-width: 400px;
-  	padding: 20px 12px 10px 20px;
-  	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  }
-  .form-style-1 li {
-  	padding: 0;
-  	display: block;
-  	list-style: none;
-  	margin: 10px 0 0 0;
-  }
-  .form-style-1 label{
-  	margin:0 0 3px 0;
-  	padding:0px;
-  	display:block;
-  	font-weight: bold;
-  }
-  .form-style-1 input[type=text],
-  .form-style-1 input[type=date],
-  .form-style-1 input[type=datetime],
-  .form-style-1 input[type=number],
-  .form-style-1 input[type=search],
-  .form-style-1 input[type=time],
-  .form-style-1 input[type=url],
-  .form-style-1 input[type=email],
-  textarea,
-  select{
-  	box-sizing: border-box;
-  	-webkit-box-sizing: border-box;
-  	-moz-box-sizing: border-box;
-  	border:1px solid #BEBEBE;
-  	padding: 7px;
-  	margin:0px;
-  	-webkit-transition: all 0.30s ease-in-out;
-  	-moz-transition: all 0.30s ease-in-out;
-  	-ms-transition: all 0.30s ease-in-out;
-  	-o-transition: all 0.30s ease-in-out;
-  	outline: none;
-  }
-  .form-style-1 input[type=text]:focus,
-  .form-style-1 input[type=date]:focus,
-  .form-style-1 input[type=datetime]:focus,
-  .form-style-1 input[type=number]:focus,
-  .form-style-1 input[type=search]:focus,
-  .form-style-1 input[type=time]:focus,
-  .form-style-1 input[type=url]:focus,
-  .form-style-1 input[type=email]:focus,
-  .form-style-1 textarea:focus,
-  .form-style-1 select:focus{
-  	-moz-box-shadow: 0 0 8px #88D5E9;
-  	-webkit-box-shadow: 0 0 8px #88D5E9;
-  	box-shadow: 0 0 8px #88D5E9;
-  	border: 1px solid #88D5E9;
-  }
-  .form-style-1 .field-divided{
-  	width: 49%;
-  }
+    body {
+      background-color: #f0f9ff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .form-style-1 .field-long{
-  	width: 100%;
-  }
-  .form-style-1 .field-select{
-  	width: 100%;
-  }
-  .form-style-1 .field-textarea{
-  	height: 100px;
-  }
-  .form-style-1 input[type=submit], .form-style-1 input[type=button]{
-  	background: #4B99AD;
-  	padding: 8px 15px 8px 15px;
-  	border: none;
-  	color: #fff;
-  }
-  .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-  	background: #4691A4;
-  	box-shadow:none;
-  	-moz-box-shadow:none;
-  	-webkit-box-shadow:none;
-  }
-  .form-style-1 .required{
-  	color:red;
-  }
-</style>
+    .feedback-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
 
+    .feedback-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .feedback-title {
+      color: var(--dark-blue);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feedback-subtitle {
+      color: var(--text-dark);
+      font-size: 1rem;
+    }
+
+    .feedback-form {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group .required {
+      color: #e74c3c;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #d1e7ff;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: #f5faff;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+      outline: none;
+      background-color: var(--white);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(to right, var(--dark-blue), var(--primary-blue));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .feedback-container {
+        padding: 0 15px;
+      }
+      
+      .feedback-title {
+        font-size: 1.5rem;
+      }
+      
+      .feedback-form {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 
-<body style="background-color: #B3E5FC;">
-
-  {%if request.user.is_authenticated%}
+<body>
+  {% if request.user.is_authenticated %}
     {% include "ecom/customer_navbar.html" %}
-  {%else%}
+  {% else %}
     {% include "ecom/navbar.html" %}
-  {%endif%}
+  {% endif %}
 
-  <center>
-    <h3 class='alert alert-success'>Send Us Your Valuable Feedback !</h3>
+  <div class="feedback-container">
+    <div class="feedback-header">
+      <h1 class="feedback-title">Send Us Your Valuable Feedback</h1>
+      <p class="feedback-subtitle">We appreciate your thoughts and suggestions</p>
+    </div>
 
-
-    <form method="post">
+    <form method="post" class="feedback-form">
       {% csrf_token %}
-    <ul class="form-style-1">
-        <li>
-            <label>Name <span class="required">*</span></label>
-            {% render_field feedbackForm.name class="field-long"  %}
+      <div class="form-group">
+        <label>Name <span class="required">*</span></label>
+        {% render_field feedbackForm.name class="form-control" placeholder="Your name" %}
+      </div>
 
-        </li>
+      <div class="form-group">
+        <label>Your Feedback <span class="required">*</span></label>
+        {% render_field feedbackForm.feedback class="form-control" placeholder="Share your thoughts with us..." %}
+      </div>
 
-        <li>
-            <label>Your Feedback <span class="required">*</span></label>
-            {% render_field feedbackForm.feedback id="field5" class="field-long field-textarea"  %}
-
-        </li>
-        <li>
-            <input type="submit" value="Send Feedback" />
-        </li>
-    </ul>
+      <input type="submit" value="Send Feedback" class="submit-btn">
     </form>
+  </div>
 
-
-  </center>
   {% include "ecom/footer.html" %}
 </body>
-
-
 </html>

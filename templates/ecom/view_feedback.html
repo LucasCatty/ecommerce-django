@@ -1,53 +1,167 @@
 {% extends 'ecom/admin_base.html' %}
 {% load static %}
+
 {% block content %}
-
-
 <head>
-  <style media="screen">
-    .alert {
-      margin-left: 25%;
-      margin-right: 25%;
-      padding: 20px;
-      background-color: #f44336;
-      color: white;
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #3498db;
+      --dark-blue: #2980b9;
+      --light-blue: #e6f2ff;
+      --accent-blue: #5dade2;
+      --white: #ffffff;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
     }
 
-    .w3-panel p {
-      padding-top: 10px;
+    .feedback-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
-    .closebtn {
-      margin-left: 15px;
-      color: white;
-      font-weight: bold;
-      float: right;
-      font-size: 22px;
-      line-height: 20px;
+    .feedback-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .feedback-title {
+      color: var(--dark-blue);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feedback-divider {
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--primary-blue), transparent);
+      margin: 20px auto;
+      width: 30%;
+    }
+
+    .feedback-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+      position: relative;
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+    }
+
+    .feedback-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .feedback-author {
+      font-weight: 600;
+      color: var(--dark-blue);
+    }
+
+    .feedback-date {
+      color: #888;
+    }
+
+    .feedback-content {
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #aaa;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+      padding: 5px;
     }
 
-    .closebtn:hover {
-      color: black;
+    .close-btn:hover {
+      color: var(--primary-blue);
+      transform: scale(1.2);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .feedback-container {
+        padding: 0 15px;
+      }
+      
+      .feedback-title {
+        font-size: 1.5rem;
+      }
+      
+      .feedback-meta {
+        flex-direction: column;
+      }
+      
+      .feedback-date {
+        margin-top: 5px;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 </head>
-<!--
-written By : sumit kumar
-facebook : fb.com/sumit.luv
--->
 
-<br><br><br><br>
-<h2 style="text-align:center; color:blue;">Feedbacks By User</h2>
-<hr>
-{%for f in feedbacks%}
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>{{f.date}} ||By : {{f.name}} </strong><br> {{f.feedback}}
+<div class="feedback-container">
+  <div class="feedback-header">
+    <h1 class="feedback-title">Customer Feedback</h1>
+    <hr class="feedback-divider">
+  </div>
+
+  {% for f in feedbacks %}
+  <div class="feedback-card">
+    <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+    <div class="feedback-meta">
+      <span class="feedback-author">From: {{f.name}}</span>
+      <span class="feedback-date">{{f.date}}</span>
+    </div>
+    <div class="feedback-content">
+      {{f.feedback}}
+    </div>
+  </div>
+  {% empty %}
+  <div class="empty-state">
+    <h3>No feedback received yet</h3>
+    <p>Customer feedback will appear here when submitted</p>
+  </div>
+  {% endfor %}
 </div>
-{%endfor%}
+
+<script>
+  // Add animation when closing feedback cards
+  document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.parentElement.style.opacity = '0';
+      setTimeout(() => {
+        this.parentElement.style.display = 'none';
+      }, 300);
+    });
+  });
+</script>
 
 {% endblock content %}

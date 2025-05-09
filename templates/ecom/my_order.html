@@ -2,223 +2,323 @@
 {% load static %}
 
 {% block content %}
-<style media="screen">
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+<style>
+  :root {
+    --primary-blue: #3498db;
+    --dark-blue: #2980b9;
+    --light-blue: #e6f2ff;
+    --accent-blue: #5dade2;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ecf0f1;
+    --success-green: #2ecc71;
+    --warning-orange: #FF5722;
+  }
 
-body {
-    background-color: #8C9EFF;
-    font-family: 'Open Sans', serif
-}
+  body {
+    background-color: #f8fafc;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+  }
 
-.container {
-    margin-top: 0px;
-    margin-bottom: 0px
-}
-
-.card {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0.10rem
-}
-
-.card-header:first-child {
-    border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
-}
-
-.card-header {
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: #fff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-}
-
-.track {
-    position: relative;
-    background-color: #ddd;
-    height: 7px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-bottom: 60px;
-    margin-top: 50px
-}
-
-.track .step {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    width: 25%;
-    margin-top: -18px;
+  .thank-you-header {
     text-align: center;
-    position: relative
-}
+    margin: 40px 0;
+    color: var(--dark-blue);
+  }
 
-.track .step.active:before {
-    background: #FF5722
-}
+  .thank-you-header h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
 
-.track .step::before {
-    height: 7px;
-    position: absolute;
-    content: "";
-    width: 100%;
-    left: 0;
-    top: 18px
-}
+  .thank-you-header p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+  }
 
-.track .step.active .icon {
-    background: #ee5435;
-    color: #fff
-}
+  .order-container {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
 
-.track .icon {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
-    border-radius: 100%;
-    background: #ddd
-}
+  .order-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
 
-.track .step.active .text {
-    font-weight: 400;
-    color: #000
-}
+  .order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.1);
+  }
 
-.track .text {
-    display: block;
-    margin-top: 7px
-}
+  .card-header {
+    background-color: var(--light-blue);
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-weight: 600;
+    color: var(--dark-blue);
+  }
 
-.itemside {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
+  .order-details {
+    padding: 25px;
+  }
+
+  .order-row {
     display: flex;
-    width: 100%
-}
+    flex-wrap: wrap;
+    margin: 0 -15px 20px;
+  }
 
-.itemside .aside {
-    position: relative;
-    -ms-flex-negative: 0;
-    flex-shrink: 0
-}
+  .order-col {
+    flex: 0 0 33.333%;
+    padding: 0 15px;
+    margin-bottom: 20px;
+  }
 
-.img-sm {
+  .product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .product-image {
     width: 80px;
     height: 80px;
-    padding: 7px
-}
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-right: 15px;
+  }
 
-ul.row,
-ul.row-sm {
-    list-style: none;
-    padding: 0
-}
+  .product-info {
+    flex: 1;
+  }
 
-.itemside .info {
-    padding-left: 15px;
-    padding-right: 7px
-}
-
-.itemside .title {
-    display: block;
+  .product-name {
+    font-weight: 600;
     margin-bottom: 5px;
-    color: #212529
-}
+    color: var(--dark-blue);
+  }
 
-p {
-    margin-top: 0;
-    margin-bottom: 1rem
-}
+  .product-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
 
-.btn-warning {
-    color: #ffffff;
-    background-color: #ee5435;
-    border-color: #ee5435;
-    border-radius: 1px
-}
+  .product-price {
+    font-weight: 600;
+    color: var(--primary-blue);
+  }
 
-.btn-warning:hover {
-    color: #ffffff;
-    background-color: #ff2b00;
-    border-color: #ff2b00;
-    border-radius: 1px
-}
+  .section-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--dark-blue);
+  }
 
+  .section-content {
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .tracking-container {
+    margin: 30px 0;
+  }
+
+  .tracking-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 50px;
+  }
+
+  .tracking-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #e0e0e0;
+    z-index: 1;
+  }
+
+  .tracking-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+  }
+
+  .step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 18px;
+  }
+
+  .step-icon.active {
+    background-color: var(--success-green);
+  }
+
+  .step-icon.pending {
+    background-color: var(--warning-orange);
+  }
+
+  .step-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .step-text.active {
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .download-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+    color: var(--white);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+  }
+
+  .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .order-col {
+      flex: 0 0 100%;
+    }
+    
+    .thank-you-header h3 {
+      font-size: 1.5rem;
+    }
+    
+    .tracking-steps {
+      flex-wrap: wrap;
+    }
+    
+    .tracking-step {
+      flex: 0 0 50%;
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .product-image {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
 </style>
-<br>
-<h3 style="text-align:center;">Thank You For Your Order  <strong>{{request.user}}</strong> !</h3> <br><br>
-<div class="container">
-    <header class="card-header" style="text-align:center;"> My Orders / Tracking </header>
 
-    {% for products,order in data %}
-
-    <article class="card">
-        <div class="card-body">
-            <ul class="row" style="margin-left:20px;margin-top:20px;">
-                <li class="col-md-4">
-                  <figure class="itemside mb-3">
-                    {%for product in products%}
-                      <div class="aside"><img src="{% static product.product_image.url %}" class="img-sm border"></div>
-                      <figcaption class="info align-self-center">
-
-                          <p class="title"><strong>Name : </strong>{{product.name}} <br> <strong>Description : </strong>{{product.description}}</p> <span class="text-muted"><strong>Price : </strong>{{product.price}} </span>
-
-                      </figcaption>
-
-                  </figure>
-                </li>
-                <li class="col-md-4">
-                    <div class="col"> <strong>Shipment Address:</strong> <br> {{order.address}}</div>
-                </li>
-                <li class="col-md-4">
-                    <div class="col"> <strong>Status:</strong> <br> {{order.status}} </div> <br>
-                    <h4><a style="text-decoration:none; color:blue;" href="{% url 'download-invoice' order.id product.id  %}" >Download Invoice</a></h4>
-                </li>
-                {%endfor%}
-            </ul>
-            <hr>
-
-            <div class="track">
-                {%if order.status == 'Pending' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%elif order.status == 'Order Confirmed' %}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%elif order.status == 'Out for Delivery'%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%else%}
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Order Pending</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
-                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Delivered</span> </div>
-                {%endif%}
-            </div>
-
-        </div>
-    </article><br>
-    {%endfor%}
+<div class="thank-you-header">
+  <h3>Thank You For Your Order, <strong>{{request.user}}</strong>!</h3>
+  <p>Your order details and tracking information are below</p>
 </div>
-<br><br><br><br><br>
+
+<div class="order-container">
+  {% for products, order in data %}
+  <div class="order-card">
+    <div class="card-header">
+      Order #{{ order.id }} - Placed on {{ order.order_date|date:"F j, Y" }}
+    </div>
+    
+    <div class="order-details">
+      <div class="order-row">
+        {% for product in products %}
+        <div class="order-col">
+          <div class="product-item">
+            <img src="{% static product.product_image.url %}" class="product-image" alt="{{ product.name }}">
+            <div class="product-info">
+              <div class="product-name">{{ product.name }}</div>
+              <div class="product-description">{{ product.description|truncatechars:50 }}</div>
+              <div class="product-price">RWF {{ product.price }}</div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+        <div class="order-col">
+          <div class="section-title">Shipping Address</div>
+          <div class="section-content">{{ order.address }}</div>
+        </div>
+        
+        <div class="order-col">
+          <div class="section-title">Order Status</div>
+          <div class="section-content" style="color: 
+            {% if order.status == 'Pending' %}var(--warning-orange)
+            {% elif order.status == 'Delivered' %}var(--success-green)
+            {% else %}var(--primary-blue)
+            {% endif %};
+            font-weight: 500;">
+            {{ order.status }}
+          </div>
+          <a href="{% url 'download-invoice' order.id product.id %}" class="download-btn">
+            Download Invoice
+          </a>
+        </div>
+      </div>
+      
+      <div class="tracking-container">
+        <div class="tracking-steps">
+          <div class="tracking-step">
+            <div class="step-icon {% if order.status != 'Pending' %}active{% else %}pending{% endif %}">
+              <i class="fa {% if order.status == 'Pending' %}fa-frown-o{% else %}fa-smile-o{% endif %}"></i>
+            </div>
+            <div class="step-text {% if order.status != 'Pending' %}active{% endif %}">Order Placed</div>
+          </div>
+          
+          <div class="tracking-step">
+            <div class="step-icon {% if order.status == 'Order Confirmed' or order.status == 'Out for Delivery' or order.status == 'Delivered' %}active{% endif %}">
+              <i class="fa fa-check"></i>
+            </div>
+            <div class="step-text {% if order.status == 'Order Confirmed' or order.status == 'Out for Delivery' or order.status == 'Delivered' %}active{% endif %}">Confirmed</div>
+          </div>
+          
+          <div class="tracking-step">
+            <div class="step-icon {% if order.status == 'Out for Delivery' or order.status == 'Delivered' %}active{% endif %}">
+              <i class="fa fa-truck"></i>
+            </div>
+            <div class="step-text {% if order.status == 'Out for Delivery' or order.status == 'Delivered' %}active{% endif %}">Shipped</div>
+          </div>
+          
+          <div class="tracking-step">
+            <div class="step-icon {% if order.status == 'Delivered' %}active{% endif %}">
+              <i class="fa fa-home"></i>
+            </div>
+            <div class="step-text {% if order.status == 'Delivered' %}active{% endif %}">Delivered</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock content %}

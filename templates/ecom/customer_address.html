@@ -3,119 +3,166 @@
 {% load widget_tweaks %}
 {% block content %}
 
-  <style type="text/css">
-.form-style-1 {
-	margin:10px auto;
-	max-width: 400px;
-	padding: 20px 12px 10px 20px;
-	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-.form-style-1 li {
-	padding: 0;
-	display: block;
-	list-style: none;
-	margin: 10px 0 0 0;
-}
-.form-style-1 label{
-	margin:0 0 3px 0;
-	padding:0px;
-	display:block;
-	font-weight: bold;
-}
-.form-style-1 input[type=text],
-.form-style-1 input[type=date],
-.form-style-1 input[type=datetime],
-.form-style-1 input[type=number],
-.form-style-1 input[type=search],
-.form-style-1 input[type=time],
-.form-style-1 input[type=url],
-.form-style-1 input[type=email],
-textarea,
-select{
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border:1px solid #BEBEBE;
-	padding: 7px;
-	margin:0px;
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-	-o-transition: all 0.30s ease-in-out;
-	outline: none;
-}
-.form-style-1 input[type=text]:focus,
-.form-style-1 input[type=date]:focus,
-.form-style-1 input[type=datetime]:focus,
-.form-style-1 input[type=number]:focus,
-.form-style-1 input[type=search]:focus,
-.form-style-1 input[type=time]:focus,
-.form-style-1 input[type=url]:focus,
-.form-style-1 input[type=email]:focus,
-.form-style-1 textarea:focus,
-.form-style-1 select:focus{
-	-moz-box-shadow: 0 0 8px #88D5E9;
-	-webkit-box-shadow: 0 0 8px #88D5E9;
-	box-shadow: 0 0 8px #88D5E9;
-	border: 1px solid #88D5E9;
-}
-.form-style-1 .field-divided{
-	width: 49%;
-}
+<style type="text/css">
+  .checkout-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
 
-.form-style-1 .field-long{
-	width: 100%;
-}
-.form-style-1 .field-select{
-	width: 100%;
-}
-.form-style-1 .field-textarea{
-	height: 100px;
-}
-.form-style-1 input[type=submit], .form-style-1 input[type=button]{
-	background: #4B99AD;
-	padding: 8px 15px 8px 15px;
-	border: none;
-	color: #fff;
-}
-.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-	background: #4691A4;
-	box-shadow:none;
-	-moz-box-shadow:none;
-	-webkit-box-shadow:none;
-}
-.form-style-1 .required{
-	color:red;
-}
+  .checkout-title {
+    color: #4B99AD;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .checkout-form {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    list-style-type: none;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  .required {
+    color: #e74c3c;
+    margin-left: 0.25rem;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+  }
+
+  .form-control:focus {
+    border-color: #88D5E9;
+    box-shadow: 0 0 8px rgba(136, 213, 233, 0.5);
+    outline: none;
+    background-color: #fff;
+  }
+
+  .field-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .btn-submit {
+    background: #4B99AD;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-submit:hover {
+    background: #4691A4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+  }
+
+  .empty-cart-message {
+    text-align: center;
+    color: #e74c3c;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 3rem 0;
+    padding: 2rem;
+    background-color: #fdf2f2;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+  }
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .checkout-container {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  }
 </style>
-{%if product_in_cart%}
-<form method="post">
-  {% csrf_token %}
-<ul class="form-style-1">
-    <li>
-        <label>Email <span class="required">*</span></label>
-        {% render_field addressForm.Email class="field-long" placeholder="Email" %}
 
-    </li>
-    <li>
-        <label>Mobile <span class="required">*</span></label>
-        {% render_field addressForm.Mobile class="field-long" placeholder="Mobile" %}
-    </li>
-
-    <li>
-        <label>Shipment Address <span class="required">*</span></label>
-        {% render_field addressForm.Address id="field5" class="field-long field-textarea" placeholder="Building Number,city, pin" %}
-
-    </li>
-    <li>
-        <input type="submit" value="Proceed To Pay" />
-    </li>
-</ul>
-</form>
-{%else%}
-<br><br>
-<h1 style="text-align:center; color:red;"> First Add Product In Cart </h1>
-<br><br><br><br><br><br><br><br><br><br>
-{%endif%}
+{% if product_in_cart %}
+<div class="checkout-container">
+  <h2 class="checkout-title">Shipping Information</h2>
+  <form method="post" class="checkout-form">
+    {% csrf_token %}
+    <ul style="padding: 0; margin: 0;">
+      <li class="form-group">
+        <label class="form-label">Email <span class="required">*</span></label>
+        {% render_field addressForm.Email class="form-control" placeholder="Enter your email address" %}
+      </li>
+      
+      <li class="form-group">
+        <label class="form-label">Mobile <span class="required">*</span></label>
+        {% render_field addressForm.Mobile class="form-control" placeholder="Enter your mobile number" %}
+      </li>
+      
+      <li class="form-group">
+        <label class="form-label">Shipment Address <span class="required">*</span></label>
+        {% render_field addressForm.Address class="form-control field-textarea" placeholder="Building Number, Street, City, PIN Code" %}
+      </li>
+      
+      <li class="form-group">
+        <button type="submit" class="btn-submit">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8V7a4 4 0 0 0-4-4h-2a4 4 0 0 0-4 4v1H3v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8z"></path></svg>
+          Proceed To Payment
+        </button>
+      </li>
+    </ul>
+  </form>
+</div>
+{% else %}
+<div class="empty-cart-message">
+  <svg class="icon" style="width: 32px; height: 32px; margin-right: 8px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4a2 2 0 0 0 0-4zm-8 2a2 2 0 1 0 0 4a2 2 0 0 0 0-4z"></path></svg>
+  Your cart is currently empty.
+  <p style="font-size: 1rem; color: #666; margin-top: 1rem;">Please add products to your cart before proceeding to checkout.</p>
+  <a href="{% url 'ecom:home' %}" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #4B99AD; color: white; text-decoration: none; border-radius: 4px;">Continue Shopping</a>
+</div>
+{% endif %}
 
 {% endblock content %}

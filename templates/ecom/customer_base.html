@@ -1,341 +1,505 @@
-<html>
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<!-- jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-<style>
-body {
-    background-color: #ebe0e0
-}
-
-#navbar {
-    background-color: #000;
-    color: black;
-}
-
-.row1 {
-    padding-top: 10px;
-    padding-right: 50px
-}
-
-.row2 {
-    padding-bottom: 20px
-}
-
-.navbar-input {
-    padding: 11px 16px;
-    border-radius: 2px 0 0 2px;
-    border: 0 none;
-    outline: 0 none;
-    font-size: 15px
-}
-
-.navbar-button {
-    background-color: #ffe11b;
-    border: 1px solid #ffe11b;
-    border-radius: 0 2px 2px 0;
-    color: #565656;
-    padding: 10px 0;
-    height: 43px;
-    cursor: pointer
-}
-
-.cart-button {
-    background-color: #808080;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
-    padding: 10px 0;
-    text-align: center;
-    height: 41px;
-    border-radius: 2px;
-    font-weight: 500;
-    width: 120px;
-    display: inline-block;
-    color: #FFFFFF;
-    text-decoration: none;
-    color: inherit;
-    border: none;
-    outline: none
-}
-
-.cart-button:hover {
-    text-decoration: none;
-    color: #fff;
-    cursor: pointer
-}
-
-.cart-svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-    margin-right: 8px
-}
-
-.item-number {
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, .1);
-    height: 20px;
-    padding: 3px 6px;
-    font-weight: 500;
-    display: inline-block;
-    color: #fff;
-    line-height: 12px;
-    margin-left: 10px
-}
-
-.upper-links {
-    display: inline-block;
-    padding: 0 11px;
-    line-height: 23px;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 0;
-    color: inherit;
-    border: none;
-    outline: none;
-    font-size: 12px
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 0px
-}
-
-.dropdown:hover {
-    background-color: #fff
-}
-
-.dropdown:hover .links {
-    color: #000
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block
-}
-
-.dropdown .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    display: none;
-    background-color: #fff;
-    color: #333;
-    left: 0px;
-    border: 0;
-    border-radius: 0;
-    box-shadow: 0 4px 8px -3px #555454;
-    margin: 0;
-    padding: 0px
-}
-
-.links {
-    color: #fff;
-    text-decoration: none
-}
-
-.links:hover {
-    color: #fff;
-    text-decoration: none
-}
-
-.profile-links {
-    font-size: 12px;
-    font-family: 'Roboto', sans-serif;
-    border-bottom: 1px solid #e9e9e9;
-    box-sizing: border-box;
-    display: block;
-    padding: 0 11px;
-    line-height: 23px
-}
-
-.profile-li {
-    padding-top: 2px
-}
-
-.largenav {
-    display: none
-}
-
-.smallnav {
-    display: block
-}
-
-.smallsearch {
-    margin-left: 15px;
-    margin-top: 15px
-}
-
-.menu {
-    cursor: pointer
-}
-
-        /*---------------------------------------
-           Social section
-        -----------------------------------------*/
-        footer {
-          padding: 0px 0px 0px 0px;
-          background-color: black;
-          margin: 0px;
-        }
-
-
-        #ftr {
-
-          padding: 20px;
-        }
-
-        .fa {
-
-          font-size: 23px;
-          width: 60px;
-          text-align: center;
-          text-decoration: none;
-          margin: 5px 2px;
-          border-radius: 50%;
-        }
-
-        .fa:hover {
-          opacity: 0.5;
-          text-decoration: none;
-        }
-
-        .fa-facebook {
-          background: #3B5998;
-          color: white;
-          margin-top: 30px;
-        }
-
-        .fa-whatsapp {
-          background: #25d366;
-          color: white;
-        }
-
-        .fa-twitter {
-          background: #55ACEE;
-          color: white;
-        }
-
-        .fa-instagram {
-          background: #125688;
-          color: white;
-        }
-
-        p {
-          text-align: center;
-
-        }
-
-
-@media screen and (min-width: 768px) {
-    .largenav {
-        display: block
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern E-commerce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+    :root {
+      --primary-color: #2c78b8;
+      --primary-dark: #195b99;
+      --primary-light: #5da2dc;
+      --secondary-color: #1db4f0;
+      --accent-color: #f0dc1d;
+      --bg-color: #f0f7ff;
+      --text-color: #2b3e50;
+      --text-light: #6c8099;
+      --card-bg: #ffffff;
+      --card-shadow: 0 8px 20px rgba(91, 155, 213, 0.1);
+      --nav-shadow: 0 2px 15px rgba(91, 155, 213, 0.2);
+      --transition: all 0.3s ease;
+      --border-radius: 12px;
     }
-
-    .smallnav {
-        display: none
+    
+    body {
+      background-color: var(--bg-color);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      padding-top: 76px;
+      color: var(--text-color);
     }
-
-    .smallsearch {
-        margin: 0px
+    
+    /* Navbar Styling */
+    .navbar {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: var(--nav-shadow);
     }
-}
-</style>
+    
+    .navbar-brand {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+      transition: var(--transition);
+    }
+    
+    .navbar-brand:hover {
+      color: var(--secondary-color);
+    }
+    
+    .nav-link {
+      color: var(--text-color) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      position: relative;
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover::after {
+      width: 80%;
+      left: 10%;
+    }
+    
+    /* Search Bar */
+    .search-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .search-form {
+      display: flex;
+      height: 45px;
+    }
+    
+    .search-input {
+      flex-grow: 1;
+      border-radius: 25px 0 0 25px;
+      border: 1px solid #e1e8f0;
+      border-right: none;
+      padding: 0 20px;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(91, 155, 213, 0.08) inset;
+      transition: var(--transition);
+      background-color: #f8fbff;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(91, 155, 213, 0.12) inset;
+    }
+    
+    .search-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 0 25px 25px 0;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .search-button:hover {
+      background-color: var(--secondary-color);
+    }
+    
+    /* Cart Button */
+    .cart-btn {
+      background-color: var(--primary-light);
+      color: white;
+      border-radius: 25px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(91, 155, 213, 0.2);
+    }
+    
+    .cart-btn:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(91, 155, 213, 0.25);
+      color: white;
+    }
+    
+    .cart-count {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      border-radius: 50%;
+      min-width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    /* Dropdown Menu */
+    .dropdown-menu {
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      padding: 0.6rem 0;
+      min-width: 220px;
+      margin-top: 12px;
+      border-top: 3px solid var(--primary-color);
+    }
+    
+    .dropdown-item {
+      padding: 0.7rem 1.5rem;
+      transition: var(--transition);
+      color: var(--text-color);
+    }
+    
+    .dropdown-item:hover {
+      background-color: #f0f7ff;
+      padding-left: 1.8rem;
+      color: var(--primary-color);
+    }
+    
+    .dropdown-item i {
+      color: var(--primary-light);
+      width: 24px;
+    }
+    
+    .dropdown-toggle::after {
+      vertical-align: middle;
+    }
+    
+    /* Cards and Content */
+    .card {
+      border: none;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(91, 155, 213, 0.15);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      transition: var(--transition);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(91, 155, 213, 0.25);
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+      padding: 3rem 0 1.5rem;
+      margin-top: 3rem;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2rem;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      background-color: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+    
+    .footer-copyright {
+      color: #fff;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-link:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .navbar-collapse {
+        background-color: var(--card-bg);
+        margin: 1rem -1rem -1rem;
+        padding: 1rem;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 10px 15px rgba(91, 155, 213, 0.1);
+      }
+      
+      .search-container {
+        margin: 1rem 0;
+      }
+      
+      .navbar-toggler {
+        color: var(--primary-color);
+        border-color: var(--primary-light);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding-top: 62px;
+      }
+      
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      
+      footer {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+    }
+    
+    /* Custom animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+  </style>
 </head>
 <body>
-<div id="navbar">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <div class="row row1">
-            <ul class="largenav pull-right">
-
-                <li class="upper-links"><a class="links" href="/my-order">Orders</a></li>
-                <li class="upper-links"><a class="links" href="/my-profile">Profile</a></li>
-                  <li class="upper-links"><form action="{% url 'logout' %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-link" style="color:white; text-decoration:none; padding:0; margin:0;">
-                      Logout
-                    </button>
-                  </form>
-                  </li>
-                <li class="upper-links dropdown"><a class="links" href="">More</a>
-                    <ul class="dropdown-menu">
-                      <li class="profile-li"><a class="profile-links" href="/send-feedback">Send Feedback</a></li>
-                        <li class="profile-li"><a class="profile-links" href="/contactus">Contact Us</a></li>
-                        <li class="profile-li"><a class="profile-links" href="/aboutus">About Us</a></li>
-                    </ul>
-                </li>
-            </ul>
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-store me-2"></i>EduSupply
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Search Bar -->
+        <div class="search-container my-2 my-lg-0 mx-auto">
+          <form class="search-form" action="/search" method="get">
+            <input class="search-input" type="search" placeholder="Search for Products, Brands and more" name="query" id="query">
+            <button class="search-button" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
         </div>
-        <div class="row row2">
-            <div class="col-sm-2">
-                <h2 style="margin:0px;"><a style="text-decoration:none; color:white;" href="/"><span class="largenav">Ecommerce </span></a></h2>
-            </div>
-
-            <div class="navbar-search smallsearch col-sm-8 col-xs-11">
-              <form  action="/search" method="get">
-                <div class="row"> <input class="navbar-input col-xs-11" type="search" placeholder="Search for Products, Brands and more" name="query" id="query">
-                  <button class="navbar-button col-xs-1" type="submit">
-                    <svg width="15px" height="15px">
-                            <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                    </svg>
+        
+        <!-- Navigation Links -->
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="/my-order">
+              <i class="fas fa-box me-1"></i> Orders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/my-profile">
+              <i class="fas fa-user me-1"></i> Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="cart-btn ms-2" href="/cart">
+              <i class="fas fa-shopping-cart"></i>
+              Cart
+              <span class="cart-count">{{ product_count_in_cart }}</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              More
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/send-feedback"><i class="fas fa-comment-dots"></i> Send Feedback</a></li>
+              <li><a class="dropdown-item" href="/contactus"><i class="fas fa-envelope"></i> Contact Us</a></li>
+              <li><a class="dropdown-item" href="/aboutus"><i class="fas fa-info-circle"></i> About Us</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="dropdown-item">
+                    <i class="fas fa-sign-out-alt"></i> Logout
                   </button>
-                </div>
-              </form>
-            </div>
-
-
-            <div class="cart1 largenav col-sm-2"> <a class="cart-button" href="/cart"> <svg class="cart-svg " width="16 " height="16 " viewBox="0 0 16 16 ">
-                        <path d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86 " fill="#fff "></path>
-                    </svg> Cart <span class="item-number ">{{ product_count_in_cart }}</span> </a> </div>
-        </div>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-</div>
-<!-- content start-->
-{% block content %}
+  </nav>
 
-{% endblock content %}
-<!-- content end-->
-<br><br><br>
-<footer>
-  <p>
-    <a id="ftr" href="https://www.facebook.com/" class="fa fa-facebook"></a>
-    <a id="ftr" href="https://www.instagram.com/" class="fa fa-instagram"></a>
-    <a id="ftr" href="https://x.com/i/flow/login" class="fa fa-twitter"></a>
-  </p>
-
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
-          <p>Made by Group Work xoxo Girls Code<br>
-            Copyright &copy; 2025 LucasCoder </p>
+  <!-- Main Content -->
+  <main class="container mt-4 fade-in">
+    {% block content %}
+    <!-- Example content for preview purposes -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body p-4">
+            <h2 class="mb-4 text-center" style="color: var(--primary-color);">Welcome to EduSupply</h2>
+            <p class="text-center">Discover amazing products at great prices</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
-<script>
-$(document).ready(function(){
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                <i class="fas fa-shipping-fast text-primary fs-4"></i>
+              </div>
+              <h5 class="card-title mb-0">Fast Delivery</h5>
+            </div>
+            <p class="card-text text-muted">Get your products delivered to your doorstep quickly and safely.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                <i class="fas fa-shield-alt text-primary fs-4"></i>
+              </div>
+              <h5 class="card-title mb-0">Secure Payment</h5>
+            </div>
+            <p class="card-text text-muted">Multiple secure payment options for your convenience and security.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                <i class="fas fa-headset text-primary fs-4"></i>
+              </div>
+              <h5 class="card-title mb-0">24/7 Support</h5>
+            </div>
+            <p class="card-text text-muted">Our customer support team is always ready to help with any issues.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+  </main>
 
-function openNav() {
-document.getElementById("mySidenav").style.width = "70%";
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links mb-4">
+        <a href="https://www.facebook.com/" class="social-icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/i/flow/login" class="social-icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://wa.me/" class="social-icon">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      
+      <div class="footer-nav">
+        <a href="/aboutus" class="footer-link">About Us</a>
+        <a href="/contactus" class="footer-link">Contact</a>
+        <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+        <a href="/terms" class="footer-link">Terms of Service</a>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>Made by Group Work xoxo Girls Code<br>
+          Copyright &copy; 2025 LucasCoder</p>
+      </div>
+    </div>
+  </footer>
 
-document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-document.getElementById("mySidenav").style.width = "0";
-document.body.style.backgroundColor = "rgba(0,0,0,0)";
-}
-
-
-});
-</script>
-
+  <script>
+    // Add some simple animations when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add fade-in class to main sections with delay
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('fade-in');
+        }, 100 * index);
+      });
+    });
+  </script>
 </body>
 </html>

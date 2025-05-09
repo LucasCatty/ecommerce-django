@@ -2,75 +2,84 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>EduSupply - Educational Products</title>
 
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
   body {
-      background-color: #ebe0e0
+      background-color: #e3f2fd;
+      font-family: 'Roboto', sans-serif;
   }
 
   #navbar {
-      background-color: #000;
-      color: black;
+      background-color: #1976d2;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
   }
 
   .row1 {
       padding-top: 10px;
-      padding-right: 50px
+      padding-right: 50px;
   }
 
   .row2 {
-      padding-bottom: 20px
+      padding-bottom: 15px;
+      padding-top: 5px;
   }
 
   .navbar-input {
       padding: 11px 16px;
-      border-radius: 2px 0 0 2px;
+      border-radius: 4px 0 0 4px;
       border: 0 none;
       outline: 0 none;
-      font-size: 15px
+      font-size: 15px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   }
 
   .navbar-button {
-      background-color: #ffe11b;
-      border: 1px solid #ffe11b;
-      border-radius: 0 2px 2px 0;
-      color: #565656;
+      background-color: #64b5f6;
+      border: 1px solid #64b5f6;
+      border-radius: 0 4px 4px 0;
+      color: #fff;
       padding: 10px 0;
       height: 43px;
-      cursor: pointer
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .navbar-button:hover {
+      background-color: #42a5f5;
   }
 
   .cart-button {
-      background-color: #808080;
-      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
-      padding: 10px 0;
+      background-color: #0d47a1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .15);
+      padding: 10px 15px;
       text-align: center;
       height: 41px;
-      border-radius: 2px;
+      border-radius: 4px;
       font-weight: 500;
       width: 120px;
       display: inline-block;
       color: #FFFFFF;
       text-decoration: none;
-      color: inherit;
       border: none;
-      outline: none
+      outline: none;
+      transition: background-color 0.3s ease;
   }
 
   .cart-button:hover {
+      background-color: #1565c0;
       text-decoration: none;
       color: #fff;
-      cursor: pointer
+      cursor: pointer;
   }
 
   .cart-svg {
@@ -78,19 +87,23 @@
       width: 16px;
       height: 16px;
       vertical-align: middle;
-      margin-right: 8px
+      margin-right: 8px;
+      fill: #fff;
   }
 
   .item-number {
-      border-radius: 3px;
-      background-color: rgba(0, 0, 0, .1);
+      border-radius: 50%;
+      background-color: #ff8f00;
       height: 20px;
+      width: 20px;
       padding: 3px 6px;
       font-weight: 500;
       display: inline-block;
       color: #fff;
-      line-height: 12px;
-      margin-left: 10px
+      line-height: 14px;
+      text-align: center;
+      margin-left: 5px;
+      font-size: 11px;
   }
 
   .upper-links {
@@ -98,29 +111,38 @@
       padding: 0 11px;
       line-height: 23px;
       font-family: 'Roboto', sans-serif;
-      letter-spacing: 0;
+      letter-spacing: 0.5px;
       color: inherit;
       border: none;
       outline: none;
-      font-size: 12px
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.3s ease;
   }
 
   .dropdown {
       position: relative;
       display: inline-block;
-      margin-bottom: 0px
+      margin-bottom: 0px;
   }
 
   .dropdown:hover {
-      background-color: #fff
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
   }
 
   .dropdown:hover .links {
-      color: #000
+      color: #e3f2fd;
   }
 
   .dropdown:hover .dropdown-menu {
-      display: block
+      display: block;
+      animation: fadeIn 0.3s;
+  }
+
+  @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
   }
 
   .dropdown .dropdown-menu {
@@ -131,64 +153,121 @@
       color: #333;
       left: 0px;
       border: 0;
-      border-radius: 0;
-      box-shadow: 0 4px 8px -3px #555454;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       margin: 0;
-      padding: 0px
+      padding: 5px 0;
+      min-width: 160px;
   }
 
   .links {
       color: #fff;
-      text-decoration: none
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
   }
 
   .links:hover {
-      color: #fff;
-      text-decoration: none
+      color: #e3f2fd;
+      text-decoration: none;
   }
 
   .profile-links {
-      font-size: 12px;
+      font-size: 13px;
       font-family: 'Roboto', sans-serif;
-      border-bottom: 1px solid #e9e9e9;
+      border-bottom: 1px solid #f5f5f5;
       box-sizing: border-box;
       display: block;
-      padding: 0 11px;
-      line-height: 23px
+      padding: 8px 16px;
+      line-height: 23px;
+      color: #424242;
+      transition: background-color 0.2s ease;
+  }
+
+  .profile-links:hover {
+      background-color: #f5f5f5;
+      text-decoration: none;
+      color: #1976d2;
   }
 
   .profile-li {
-      padding-top: 2px
+      padding-top: 2px;
   }
 
   .largenav {
-      display: none
+      display: none;
   }
 
   .smallnav {
-      display: block
+      display: block;
   }
 
   .smallsearch {
       margin-left: 15px;
-      margin-top: 15px
+      margin-top: 15px;
   }
 
   .menu {
-      cursor: pointer
+      cursor: pointer;
+  }
+
+  .brand-logo {
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+  }
+
+  .brand-logo:hover {
+      color: #e3f2fd;
+      text-decoration: none;
+  }
+
+  .brand-logo i {
+      margin-right: 10px;
+      font-size: 28px;
+  }
+
+  .brand-tagline {
+      font-size: 12px;
+      color: #bbdefb;
+      margin-left: 5px;
+      font-weight: 300;
+  }
+
+  .logout-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      text-decoration: none;
+      padding: 0;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+  }
+
+  .logout-btn:hover {
+      color: #e3f2fd;
   }
 
   @media screen and (min-width: 768px) {
       .largenav {
-          display: block
+          display: block;
       }
 
       .smallnav {
-          display: none
+          display: none;
       }
 
       .smallsearch {
-          margin: 0px
+          margin: 0px;
       }
   }
 </style>
@@ -201,71 +280,81 @@
         <div class="container">
             <div class="row row1">
                 <ul class="largenav pull-right">
-
-                    <li class="upper-links"><a class="links" href="/my-order">Orders</a></li>
-                    <li class="upper-links"><a class="links" href="/my-profile">Profile</a></li>
-                      <li class="upper-links"><form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    <li class="upper-links"><a class="links" href="/my-order"><i class="fa fa-list-alt"></i> Orders</a></li>
+                    <li class="upper-links"><a class="links" href="/my-profile"><i class="fa fa-user"></i> Profile</a></li>
+                    <li class="upper-links">
+                      <form action="{% url 'logout' %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-link" style="color:white; text-decoration:none; padding:0; margin:0;">
-                          Logout
+                        <button type="submit" class="logout-btn">
+                          <i class="fa fa-sign-out"></i> Logout
                         </button>
                       </form>
-                      </li>
-                    <li class="upper-links dropdown"><a class="links" href="">More</a>
+                    </li>
+                    <li class="upper-links dropdown">
+                      <a class="links" href=""><i class="fa fa-ellipsis-h"></i> More</a>
                         <ul class="dropdown-menu">
-                          <li class="profile-li"><a class="profile-links" href="/send-feedback">Send Feedback</a></li>
-                            <li class="profile-li"><a class="profile-links" href="/contactus">Contact Us</a></li>
-                            <li class="profile-li"><a class="profile-links" href="/aboutus">About Us</a></li>
+                          <li class="profile-li"><a class="profile-links" href="/send-feedback"><i class="fa fa-comment"></i> Send Feedback</a></li>
+                          <li class="profile-li"><a class="profile-links" href="/contactus"><i class="fa fa-envelope"></i> Contact Us</a></li>
+                          <li class="profile-li"><a class="profile-links" href="/aboutus"><i class="fa fa-info-circle"></i> About Us</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <div class="row row2">
                 <div class="col-sm-2">
-                    <h2 style="margin:0px;"><a style="text-decoration:none; color:white;" href="/"><span class="largenav">Ecommerce </span></a></h2>
+                    <a href="/" class="brand-logo">
+                      <i class="fa fa-book"></i> EduSupply
+                    </a>
+                    <span class="brand-tagline">Educational Products</span>
                 </div>
 
-
                 <div class="navbar-search smallsearch col-sm-8 col-xs-11">
-                  <form  action="/search" method="get">
-                    <div class="row"> <input class="navbar-input col-xs-11" type="search" placeholder="Search for Products, Brands and more" name="query" id="query">
+                  <form action="/search" method="get">
+                    <div class="row"> 
+                      <input class="navbar-input col-xs-11" type="search" placeholder="Search for school supplies, books, and more..." name="query" id="query">
                       <button class="navbar-button col-xs-1" type="submit">
-                        <svg width="15px" height="15px">
-                                <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
-                        </svg>
+                        <i class="fa fa-search"></i>
                       </button>
                     </div>
                   </form>
                 </div>
 
-                <div class="cart1 largenav col-sm-2"> <a class="cart-button" href="/cart"> <svg class="cart-svg " width="16 " height="16 " viewBox="0 0 16 16 ">
-                            <path d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86 " fill="#fff "></path>
-                        </svg> Cart <span class="item-number ">{{ product_count_in_cart }}</span> </a> </div>
+                <div class="cart1 largenav col-sm-2"> 
+                  <a class="cart-button" href="/cart"> 
+                    <i class="fa fa-shopping-cart"></i> Cart 
+                    <span class="item-number">{{ product_count_in_cart }}</span> 
+                  </a> 
+                </div>
             </div>
         </div>
     </div>
 
-
-
     <script>
     $(document).ready(function(){
+      // Add smooth scrolling
+      $('a[href*="#"]').on('click', function(e) {
+        e.preventDefault();
+        
+        $('html, body').animate(
+          {
+            scrollTop: $($(this).attr('href')).offset().top,
+          },
+          500,
+          'linear'
+        );
+      });
 
-    function openNav() {
-    document.getElementById("mySidenav").style.width = "70%";
+      // Mobile navigation toggle
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "70%";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      }
 
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    }
-
-    function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.body.style.backgroundColor = "rgba(0,0,0,0)";
-    }
-
-
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.body.style.backgroundColor = "rgba(0,0,0,0)";
+      }
     });
     </script>
-
-
-
   </body>
 </html>
